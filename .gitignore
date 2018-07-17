@@ -1,0 +1,6 @@
+.DS_Store
+.idea
+*.pyc
+*.pyo
+examples/curl/vol/*
+!examples/curl/vol/.gitkeep

@@ -1,6 +1,10 @@
+# What is Docker and How to Use it With Python (Tutorial)
+
+![What is Docker and How to Use it With Python (Tutorial)](./images/cover.png)
+
 This is an introductory tutorial on Docker containers. By the end of this article, you will know how to use Docker on your local machine. Along with Python, we are going to run Nginx and Redis containers. Those examples assume that you are familiar with the basic concepts of those technologies. There will be lots of shell examples, so go ahead and open the terminal.
 
-# Table of contents
+## Table of contents
 
 * [What is Docker?](#what-is-docker)
 * [How does it differ from virtualization?](#how-does-it-differ-from-virtualization)
@@ -17,7 +21,7 @@ This is an introductory tutorial on Docker containers. By the end of this articl
 * [Docker way](#docker-way)
 * [Conclusion](#conclusion)
 
-# What is Docker?
+## What is Docker?
 
 [Docker](https://www.docker.com/) is an open-source tool that automates the deployment of an application inside a software container. 
 The easiest way to grasp the idea behind Docker is to compare it to, well... standard shipping containers.
@@ -35,7 +39,7 @@ When you develop an application, you need to provide your code along with all po
 
 This challenge can be addressed by isolating the app to make it independent of the system.
 
-# How does it differ from virtualization?
+## How does it differ from virtualization?
 
 Traditionally, virtual machines were used to avoid this unexpected behavior. The main problem with VM is that an “extra OS” on top of the host operating system adds gigabytes of space to the project. Most of the time your server will host several VMs that will take up even more space. And by the way, at the moment, most cloud-based server providers will charge you for that extra space. Another significant drawback of VM is a slow boot.
 
@@ -45,7 +49,7 @@ Docker eliminates all the above by simply sharing the OS kernel across all the c
 
 Keep in mind that Docker is not the first and not the only containerization platform. However, at the moment Docker is the biggest and the most powerful player on the market.
 
-# Why do we need Docker?
+## Why do we need Docker?
 
 The short list of benefits includes:
 
@@ -83,11 +87,11 @@ You can integrate an [external logging driver](https://docs.docker.com/config/co
 
 A correctly wrapped application will cover most of the [Twelve Factors](https://12factor.net/). By design, Docker forces you follow its core principles, such as configuration over environment variables, communication over TCP/UDP ports, etc. And if you've done your application right, it will be ready for scaling not only in Docker.
 
-# Supported platforms
+## Supported platforms
 
 Docker's native platform is Linux, as it's based on features provided by the Linux kernel. However, you can still run it on macOS and Windows. The only difference is that on macOS and Windows, Docker is encapsulated into a tiny virtual machine. At the moment, Docker for macOS and Windows has reached a significant level of usability and feels more like a native app.
 
-# Installation
+## Installation
 
 You can check out the installation instructions for Docker [here](https://docs.docker.com/install/).
 
@@ -97,7 +101,7 @@ If you're running Docker on Linux, you need to run all the following commands as
 sudo usermod -aG docker $(whoami)
 ```
 
-# Terminology
+## Terminology
 
 * **Container** -- a running instance that encapsulates required software. Containers are always created from images. A container can expose ports and volumes to interact with other containers or/and the outer world. Containers can be easily killed / removed and re-created again in a very short time. Containers don't keep state.
 
@@ -113,7 +117,7 @@ sudo usermod -aG docker $(whoami)
 
 ![Docker hub](./images/docker-hub.png)
 
-# Example 1: hello world
+## Example 1: hello world
 
 It's time to run your first container:
 
@@ -259,7 +263,7 @@ docker rm -f $(docker ps -aq)
 * **-f** flag (for rm) stops the container if it's running (i.e., force deletion).
 * **-q** flag (for ps) is to print only container IDs.
 
-# Example 2: Environment variables and volumes
+## Example 2: Environment variables and volumes
 
 Starting from this example, you'll need several additional files you can find on my [GitHub repo](https://github.com/alexryabtsev/docker-workshop/). 
 You can clone my repo or simply use the [following link](https://github.com/alexryabtsev/docker-workshop/archive/master.zip) to download the sample files.
@@ -304,7 +308,7 @@ docker inspect test-nginx
 
 This command displays system-wide information about the Docker installation. This information includes the kernel version, number of containers and images, exposed ports, mounted volumes, etc.
 
-# Example 3: Writing your first Dockerfile
+## Example 3: Writing your first Dockerfile
 
 To build a Docker image, you need to create a Dockerfile. It is a plain text file with instructions and arguments. Here is the description of the instructions we're going to use in our next example:
 
@@ -414,7 +418,7 @@ To see the results saved to file run:
 cat ./vol/results
 ```
 
-# Best practices for creating images
+## Best practices for creating images
 
 * Include only **necessary context** -- use a [**.dockerignore**](https://docs.docker.com/engine/reference/builder/#dockerignore-file) file (like .gitignore in git)
 * Avoid installing **unnecessary packages** -- it will consume extra disk space.
@@ -422,7 +426,7 @@ cat ./vol/results
 * **Be careful with volumes**. You should remember what data is in volumes. Because volumes are persistent and don't die with the containers, the next container will use data from the volume created by the previous container.
 * Use [**environment variables**](https://docs.docker.com/engine/reference/builder/#environment-replacement) (in RUN, EXPOSE, VOLUME). It will make your Dockerfile more flexible.
 
-# Alpine images
+## Alpine images
 
 A lot of Docker images (versions of images) are created on top of [**Alpine Linux**](https://alpinelinux.org/) -- this is a lightweight distro that allows you to reduce the overall size of Docker images.
 
@@ -430,7 +434,7 @@ I recommend that you use images based on Alpine for third-party services, such a
 
 Only you can decide which base image to use, but you can get the maximum benefit by using one basic image for all images, because in this case the cache will be used more effectively.
 
-# Example 4: Connection between containers
+## Example 4: Connection between containers
 
 [**Docker compose**](https://docs.docker.com/compose/overview/) -- is an CLI utility used to connect containers with each other.
 
@@ -629,7 +633,7 @@ local               projectdev_pg_data
 local               projectdev_redis_data
 ```
 
-# Docker way
+## Docker way
 
 Docker has some restrictions and requirements, depending on the architecture of your system (applications that you pack into containers). You can ignore these requirements or find some workarounds, but in this case, you won't get all the benefits of using Docker. My strong advice is to follow these recommendations:
 
@@ -639,7 +643,7 @@ Docker has some restrictions and requirements, depending on the architecture of 
 * **Do not use SSH** (if you need to step into container you can use docker exec command).
 * **Avoid manual configurations** (or actions) inside container.
 
-# Conclusion
+## Conclusion
 
 To summarize this tutorial, alongside with IDE and Git, Docker has become a must-have developer tool. It's a production-ready tool with a rich and mature infrastructure.
 

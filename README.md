@@ -1,8 +1,8 @@
-# What is Docker and How to Use it With Python (Tutorial)
+# UIT Docker workshop
 
-![What is Docker and How to Use it With Python (Tutorial)](./images/cover.png)
+![What is Docker and How to Use it](./images/cover.png)
 
-This is an introductory tutorial on Docker containers. By the end of this article, you will know how to use Docker on your local machine. Along with Python, we are going to run Nginx and Redis containers. Those examples assume that you are familiar with the basic concepts of those technologies. There will be lots of shell examples, so go ahead and open the terminal.
+This is an workshop on Docker containers. By the end of this article, you will know how to use Docker on your local machine. Along with Python, we are going to run Nginx and Redis containers. Those examples assume that you are familiar with the basic concepts of those technologies. There will be lots of shell examples, so go ahead and open the terminal.
 
 ## Table of contents
 
@@ -23,7 +23,7 @@ This is an introductory tutorial on Docker containers. By the end of this articl
 
 ## What is Docker?
 
-[Docker](https://www.docker.com/) is an open-source tool that automates the deployment of an application inside a software container. 
+[Docker](https://www.docker.com/) is an open-source tool that automates the deployment of an application inside a software container.
 The easiest way to grasp the idea behind Docker is to compare it to, well... standard shipping containers.
 
 Back in the day, transportation companies faced the following challenges:
@@ -234,7 +234,7 @@ docker start daemon
 Let's ensure that it's running:
 
 ```bash
-docker ps -a 
+docker ps -a
 ```
 
 Console output:
@@ -265,7 +265,7 @@ docker rm -f $(docker ps -aq)
 
 ## Example 2: Environment variables and volumes
 
-Starting from this example, you'll need several additional files you can find on my [GitHub repo](https://github.com/alexryabtsev/docker-workshop/). 
+Starting from this example, you'll need several additional files you can find on my [GitHub repo](https://github.com/alexryabtsev/docker-workshop/).
 You can clone my repo or simply use the [following link](https://github.com/alexryabtsev/docker-workshop/archive/master.zip) to download the sample files.
 
 It's time to create and run more a meaningful container, like **Nginx**.
